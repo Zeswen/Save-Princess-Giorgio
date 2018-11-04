@@ -103,8 +103,27 @@ Player.prototype.attack = function () {
   }
 }
 
+Player.prototype.receiveDamage = function () {
+  canvas.enemies.forEach(enemy => {
+    if (this.x + this.width >= enemy.x &&
+      enemy.x + enemy.width >= this.x &&
+      this.y + this.height >= enemy.y &&
+      enemy.height + enemy.y >= this.y) {
+      this.hp -= enemy.str;
+    }
+  })
+}
+
+Player.prototype.checkHp = function () {
+  if (this.hp <= 0) {
+    location.reload();
+  }
+}
+
 Player.prototype.update = function () {
   this.move();
+  this.receiveDamage();
+  this.checkHp();
   this.interact();
   this.attack();
   this.speedMod();

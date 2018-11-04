@@ -1,5 +1,5 @@
 function getRndInteger(min, max) {
-  return Math.floor(Math.random() * (max - min + 1) ) + min;
+  return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
 function Enemy(canvas) {
@@ -38,10 +38,18 @@ Enemy.prototype.move = function () {
 }
 
 Enemy.prototype.receiveDamage = function () {
-
+  if (this.x + this.width >= player.x &&
+    player.x + player.width >= this.x &&
+    this.y + this.height >= player.y &&
+    player.height + player.y >= this.y) {
+    if (player.attacks) {
+        this.hp -= player.str;
+    }
+  }
 }
 
 Enemy.prototype.update = function () {
+  this.receiveDamage();
   this.move();
   this.draw();
 }
