@@ -13,8 +13,9 @@ function Player(canvas) {
 	this.maxXPos = canvas.width - this.width;
 	this.maxYPos = canvas.height - this.height;
 	this.direction = "N";
-	this.class = "warrior";
+	this.class = "Warrior";
 	this.xp = 0;
+	this.level = 1;
 	this.coins = 0;
 	this.hp = 100;
 	this.str = 5;
@@ -91,7 +92,12 @@ Player.prototype.updatePos = function () {
 
 Player.prototype.interact = function () {
 	if (keys[90]) {
-		console.log("a");
+		if (this.x + this.width >= princess.x &&
+			princess.x + princess.width >= this.x &&
+			this.y + this.height >= princess.y &&
+			princess.height + princess.y + 15 >= this.y) {
+			interacted = true;
+		}
 	}
 }
 
@@ -137,6 +143,13 @@ Player.prototype.checkHp = function () {
 	}
 }
 
+Player.prototype.levelUp = function ()  {
+	if (this.xp === 150) {
+		this.level += 1;
+		this.xp = 0;
+	}
+}
+
 Player.prototype.update = function () {
 	this.move();
 	this.receiveDamage();
@@ -146,6 +159,7 @@ Player.prototype.update = function () {
 	this.speedMod();
 	this.updatePos();
 	this.draw();
+	this.levelUp();
 }
 
 const player = new Player(canvas);

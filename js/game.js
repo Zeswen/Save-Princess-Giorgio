@@ -10,7 +10,9 @@ window.onload = function () {
 		canvas.enemies.forEach(enemy => enemy.update());
 	}
 	updateGame();
+
 }
+
 
 document.addEventListener("keydown", function (e) {
 	keys[e.keyCode] = true;

@@ -14,7 +14,7 @@ function Enemy(canvas) {
 	this.maxXPos = canvas.width - this.width;
 	this.maxYPos = canvas.height - this.height;
 	this.class = "Warrior";
-	this.hp = 10;
+	this.hp = 20;
 	this.str = 5;
 }
 
@@ -69,7 +69,6 @@ Enemy.prototype.receiveDamage = function () {
 		}
 	}
 }
-
 
 Enemy.prototype.update = function () {
 	this.receiveDamage();

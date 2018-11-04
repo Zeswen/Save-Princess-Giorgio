@@ -7,7 +7,7 @@ function Canvas() {
 	this.height = 480;
 	this.img = new Image();
 	this.img.src = './img/wood-background.png'
-	this.counter = 0;
+	this.counter = 1;
 	this.enemies = [];
 }
 
@@ -19,21 +19,27 @@ Canvas.prototype.clearAll = function () {
 	this.ctx.clearRect(this.x, this.y, this.width, this.height);
 }
 
+let interacted = false;
+
 Canvas.prototype.createEnemy = function () {
-	this.counter += 1;
+	if (interacted === true) {
+		this.counter += 1;
 
-	if (this.counter % 180 === 0) {
-		canvas.enemies.push(new Enemy(canvas))
-	}
-}
-
-Canvas.prototype.checkHp = function () {
-	canvas.enemies.forEach(enemy => {
-		if (enemy.hp <= 0) {
-			let enemyIndex = canvas.enemies.indexOf(enemy);
-			canvas.enemies.splice(enemyIndex, 1);
+		if (this.counter % 180 === 0) {
+			canvas.enemies.push(new Enemy(canvas))
 		}
-	})
+	}
+
+	Canvas.prototype.checkHp = function () {
+		canvas.enemies.forEach(enemy => {
+			if (enemy.hp <= 0) {
+				let enemyIndex = canvas.enemies.indexOf(enemy);
+				canvas.enemies.splice(enemyIndex, 1);
+				player.xp += 10;
+				player.coins += 5;
+			}
+		})
+	}
 }
 
 Canvas.prototype.update = function () {

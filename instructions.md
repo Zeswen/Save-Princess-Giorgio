@@ -2,6 +2,7 @@
   Purpose: gameboard + store/common zones,
 }
 
+
 #Object: player {
   Purpose: defeat monster waves to defend princess,
   Class: Warrior (tloz altp sfx), Archer (tlozaltp arrow sound), Mage (terraria magic missile sfx),
