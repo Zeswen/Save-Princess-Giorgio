@@ -19,7 +19,6 @@ Canvas.prototype.clearAll = function () {
   this.ctx.clearRect(this.x, this.y, this.width, this.height);
 }
 
-
 Canvas.prototype.createEnemy = function () {
   this.counter += 1;
 
@@ -35,7 +34,6 @@ Canvas.prototype.checkHp = function () {
       canvas.enemies.splice(enemyIndex, 1);
     }
   })
-
 }
 
 Canvas.prototype.update = function () {
@@ -44,7 +42,5 @@ Canvas.prototype.update = function () {
   this.checkHp();
   this.draw();
 }
-
-
 
 const canvas = new Canvas(); 

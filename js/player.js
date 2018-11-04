@@ -110,6 +110,23 @@ Player.prototype.receiveDamage = function () {
       this.y + this.height >= enemy.y &&
       enemy.height + enemy.y >= this.y) {
       this.hp -= enemy.str;
+      switch (enemy.direction) {
+        case "E":
+        this.x -= 10;
+        break;
+
+        case "W":
+        this.x += 10;
+        break;
+
+        case "N":
+        this.y -= 10;
+        break;
+
+        case "S":
+        this.y += 10;
+        break
+      }
     }
   })
 }
