@@ -1,15 +1,13 @@
 const keys = {};
 
 window.onload = function () {
-  const canvas = new Canvas();
-  const player = new Player(canvas);
-  const princess = new Princess(canvas);
 
   function updateGame() {
     requestAnimationFrame(updateGame);
     canvas.update();
     player.update();
     princess.update();
+    canvas.enemies.forEach(enemy => enemy.update());
   }
 
   updateGame();

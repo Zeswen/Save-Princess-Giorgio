@@ -7,6 +7,8 @@ function Canvas() {
   this.height = 480;
   this.img = new Image();
   this.img.src = './img/wood-background.png'
+  this.counter = 0;
+  this.enemies = [];
 }
 
 Canvas.prototype.draw = function () {
@@ -17,7 +19,20 @@ Canvas.prototype.clearAll = function () {
   this.ctx.clearRect(this.x, this.y, this.width, this.height);
 }
 
+
+Canvas.prototype.createEnemy = function () {
+  this.counter += 1;
+
+  if (this.counter % 120 === 0) {
+    canvas.enemies.push(new Enemy(canvas))
+  }
+}
 Canvas.prototype.update = function () {
   this.clearAll();
+  this.createEnemy();
   this.draw();
 }
+
+
+
+const canvas = new Canvas(); 

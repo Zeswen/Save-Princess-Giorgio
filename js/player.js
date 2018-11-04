@@ -7,7 +7,7 @@ function Player(canvas) {
   this.velX = 0;
   this.velY = 0;
   this.speed = 3;
-  this.friction = 0.90;
+  this.friction = 0.75;
   this.minXPos = 0;
   this.minYPos = 0;
   this.maxXPos = canvas.width - this.width;
@@ -53,6 +53,18 @@ Player.prototype.speedMod = function () {
 }
 
 Player.prototype.updatePos = function () {
+  const tempX = this.x;
+  const tempY = this.y;
+
+  if (this.x + this.width >= princess.x &&
+    princess.x + princess.width >= this.x &&
+    this.y + this.height >= princess.y &&
+    princess.height + princess.y >= this.y) {
+    this.velY = 0;
+    this.velX = 0;
+  }
+
+
   if (this.x > this.maxXPos) {
     this.x = this.maxXPos;
   } else if (this.x < this.minXPos) {
@@ -72,3 +84,5 @@ Player.prototype.update = function () {
   this.updatePos();
   this.draw();
 }
+
+const player = new Player(canvas);

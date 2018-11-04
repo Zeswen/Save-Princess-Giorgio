@@ -14,3 +14,5 @@ Princess.prototype.draw = function () {
 Princess.prototype.update = function () {
   this.draw();
 }
+
+const princess = new Princess(canvas);
