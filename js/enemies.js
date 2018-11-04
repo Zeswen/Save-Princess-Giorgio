@@ -48,6 +48,7 @@ Enemy.prototype.receiveDamage = function () {
   }
 }
 
+
 Enemy.prototype.update = function () {
   this.receiveDamage();
   this.move();

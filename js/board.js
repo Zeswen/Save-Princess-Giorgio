@@ -27,9 +27,21 @@ Canvas.prototype.createEnemy = function () {
     canvas.enemies.push(new Enemy(canvas))
   }
 }
+
+Canvas.prototype.checkHp = function () {
+  canvas.enemies.forEach(enemy => {
+    if (enemy.hp <= 0) {
+      let enemyIndex = canvas.enemies.indexOf(enemy);
+      canvas.enemies.splice(enemyIndex, 1);
+    }
+  })
+
+}
+
 Canvas.prototype.update = function () {
   this.clearAll();
   this.createEnemy();
+  this.checkHp();
   this.draw();
 }
 
