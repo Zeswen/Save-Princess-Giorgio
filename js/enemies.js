@@ -12,6 +12,7 @@ function Enemy(canvas) {
   this.minYPos = 0;
   this.maxXPos = canvas.width - this.width;
   this.maxYPos = canvas.height - this.height;
+  this.class = "Warrior";
   this.hp = 10;
   this.str = 5;
 }
@@ -34,6 +35,10 @@ Enemy.prototype.move = function () {
     this.x = canvas.width / 2;
     this.y = canvas.height / 2;
   }
+}
+
+Enemy.prototype.receiveDamage = function () {
+
 }
 
 Enemy.prototype.update = function () {

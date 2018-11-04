@@ -14,10 +14,13 @@ function Player(canvas) {
   this.maxYPos = canvas.height - this.height;
   this.direction = "N";
   this.class = "warrior";
+  this.xp = 0;
+  this.coins = 0;
   this.hp = 100;
-  this.str = 10;
-  this.def = 0;
+  this.str = 5;
+  this.dex = 5;
   this.attacks = false;
+  this.skill = "Roar";
 }
 
 Player.prototype.draw = function () {
@@ -101,7 +104,6 @@ Player.prototype.attack = function () {
 }
 
 Player.prototype.update = function () {
-  console.log(this.attacks)
   this.move();
   this.interact();
   this.attack();
