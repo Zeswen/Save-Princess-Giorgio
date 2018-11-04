@@ -12,6 +12,8 @@ function Enemy(canvas) {
   this.minYPos = 0;
   this.maxXPos = canvas.width - this.width;
   this.maxYPos = canvas.height - this.height;
+  this.hp = 10;
+  this.str = 5;
 }
 
 Enemy.prototype.draw = function () {

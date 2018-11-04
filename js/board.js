@@ -23,7 +23,7 @@ Canvas.prototype.clearAll = function () {
 Canvas.prototype.createEnemy = function () {
   this.counter += 1;
 
-  if (this.counter % 120 === 0) {
+  if (this.counter % 180 === 0) {
     canvas.enemies.push(new Enemy(canvas))
   }
 }

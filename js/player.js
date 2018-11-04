@@ -12,6 +12,12 @@ function Player(canvas) {
   this.minYPos = 0;
   this.maxXPos = canvas.width - this.width;
   this.maxYPos = canvas.height - this.height;
+  this.direction = "N";
+  this.class = "warrior";
+  this.hp = 100;
+  this.str = 10;
+  this.def = 0;
+  this.attacks = false;
 }
 
 Player.prototype.draw = function () {
@@ -23,24 +29,28 @@ Player.prototype.move = function () {
   if (keys[38]) {
     if (this.velY > -this.speed) {
       this.velY--;
+      this.direction = "N";
     }
   }
 
   if (keys[40]) {
     if (this.velY < this.speed) {
       this.velY++;
+      this.direction = "S";
     }
   }
 
   if (keys[39]) {
     if (this.velX < this.speed) {
       this.velX++;
+      this.direction = "W";
     }
   }
 
   if (keys[37]) {
     if (this.velX > -this.speed) {
       this.velX--;
+      this.direction = "E";
     }
   }
 }
@@ -53,8 +63,6 @@ Player.prototype.speedMod = function () {
 }
 
 Player.prototype.updatePos = function () {
-  const tempX = this.x;
-  const tempY = this.y;
 
   if (this.x + this.width >= princess.x &&
     princess.x + princess.width >= this.x &&
@@ -78,8 +86,25 @@ Player.prototype.updatePos = function () {
   }
 }
 
+Player.prototype.interact = function () {
+  if (keys[90]) {
+    console.log("a");
+  }
+}
+
+Player.prototype.attack = function () {
+  if (keys[88]) {
+    this.attacks = true;
+  } else {
+    this.attacks = false;
+  }
+}
+
 Player.prototype.update = function () {
+  console.log(this.attacks)
   this.move();
+  this.interact();
+  this.attack();
   this.speedMod();
   this.updatePos();
   this.draw();

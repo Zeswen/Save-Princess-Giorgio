@@ -9,7 +9,6 @@ window.onload = function () {
     princess.update();
     canvas.enemies.forEach(enemy => enemy.update());
   }
-
   updateGame();
 }
 
