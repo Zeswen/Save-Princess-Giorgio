@@ -44,3 +44,9 @@
 #Game {
 Purpose: Defeat the waves for 30 seconds each that appear every (counter % (decreases every wave)) to defend the beautiful princess giorgio
 }
+
+
+#Timer {
+  If already var wave1 is true after completing wave1 it'll pass to the next if statement,
+  after 30s of wave stopEnemyfunction will stop generating em
+}
