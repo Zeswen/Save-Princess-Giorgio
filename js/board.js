@@ -20,10 +20,11 @@ Canvas.prototype.clearAll = function () {
 	this.ctx.clearRect(this.x, this.y, this.width, this.height);
 }
 
-let interacted = false;
+let waves = false;
+
 
 Canvas.prototype.createEnemy = function () {
-	if (interacted === true) {
+	if (waves === true) {
 		this.counter += 1;
 
 		if (this.counter % 180 === 0) {
@@ -45,12 +46,11 @@ Canvas.prototype.checkHp = function () {
 
 
 Canvas.prototype.stopEnemySpawn = function () {
-	if (interacted === true) {
+	if (waves === true) {
 		this.secCounter += 1;
-		console.log(this.secCounter)
 
 		if (this.secCounter >= 1800) {
-			interacted = false;
+			waves = false;
 			this.secCounter = 1;
 		}
 	}

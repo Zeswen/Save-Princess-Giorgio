@@ -2,10 +2,15 @@ function getRndInteger(min, max) {
 	return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
+function getRndArr(arr) {
+	return arr[Math.floor(Math.random() * 2)]
+}
+
+
 function Enemy(canvas) {
 	this.ctx = canvas.ctx;
 	this.x = getRndInteger(0, canvas.width);
-	this.y = 0;
+	this.y = getRndArr([0, canvas.height - 32]);
 	this.direction = "N";
 	this.width = 16;
 	this.height = 32;
@@ -43,29 +48,47 @@ Enemy.prototype.move = function () {
 }
 
 Enemy.prototype.receiveDamage = function () {
-	if (this.x + this.width >= player.x &&
-		player.x + player.width >= this.x &&
-		this.y + this.height >= player.y &&
-		player.height + player.y >= this.y) {
-		if (player.attacks) {
-			this.hp -= player.str;
-			switch (player.direction) {
-				case "E":
+	if (player.attacks) {
+		switch (player.direction) {
+			case "E":
+				if (this.x + this.width + 10 >= player.x &&
+					player.x + player.width >= this.x &&
+					this.y + this.height >= player.y &&
+					player.height + player.y >= this.y) {
+					this.hp -= player.str;
 					this.x -= 10;
-					break;
+				}
+				break;
 
-				case "W":
+			case "W":
+				if (this.x + this.width >= player.x &&
+					player.x + player.width + 10 >= this.x &&
+					this.y + this.height >= player.y &&
+					player.height + player.y >= this.y) {
+					this.hp -= player.str;
 					this.x += 10;
-					break;
+				}
+				break;
 
-				case "N":
+			case "N":
+				if (this.x + this.width >= player.x &&
+					player.x + player.width >= this.x &&
+					this.y + this.height + 10 >= player.y &&
+					player.height + player.y >= this.y) {
+					this.hp -= player.str;
 					this.y -= 10;
-					break;
+				}
+				break;
 
-				case "S":
+			case "S":
+				if (this.x + this.width >= player.x &&
+					player.x + player.width >= this.x &&
+					this.y + this.height >= player.y &&
+					player.height + player.y + 10 >= this.y) {
+					this.hp -= player.str;
 					this.y += 10;
-					break
-			}
+				}
+				break;
 		}
 	}
 }

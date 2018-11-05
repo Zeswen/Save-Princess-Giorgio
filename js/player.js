@@ -96,7 +96,7 @@ Player.prototype.interact = function () {
 			princess.x + princess.width >= this.x &&
 			this.y + this.height >= princess.y &&
 			princess.height + princess.y + 15 >= this.y) {
-			interacted = true;
+			waves = true;
 		}
 	}
 }
@@ -104,6 +104,24 @@ Player.prototype.interact = function () {
 Player.prototype.attack = function () {
 	if (keys[88]) {
 		this.attacks = true;
+		switch (this.direction) {
+			case "N":
+		this.ctx.fillRect(this.x - 8, this.y - this.width, this.height, this.width);
+			break;
+
+			case "E":
+		this.ctx.fillRect(this.x - this.width, this.y, this.width, this.height);
+			break;
+
+			case "S":
+		this.ctx.fillRect(this.x - 8, this.y + this.height, this.height, this.width);
+			break;
+
+			case "W":
+		this.ctx.fillRect(this.x + this.width, this.y, this.width, this.height);
+			break;
+
+		}
 	} else {
 		this.attacks = false;
 	}
