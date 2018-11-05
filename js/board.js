@@ -9,6 +9,7 @@ function Canvas() {
 	this.img.src = './img/wood-background.png'
 	this.counter = 1;
 	this.secCounter = 1;
+	this.enemyRate = 180;
 	this.enemies = [];
 }
 
@@ -27,11 +28,12 @@ Canvas.prototype.createEnemy = function () {
 	if (waves === true) {
 		this.counter += 1;
 
-		if (this.counter % 180 === 0) {
-			canvas.enemies.push(new Enemy(canvas))
+		if (this.counter % this.enemyRate === 0) {
+			this.enemies.push(new Enemy(canvas));
 		}
 	}
 }
+
 
 Canvas.prototype.checkHp = function () {
 	canvas.enemies.forEach(enemy => {
@@ -52,6 +54,11 @@ Canvas.prototype.stopEnemySpawn = function () {
 		if (this.secCounter >= 1800) {
 			waves = false;
 			this.secCounter = 1;
+			this.enemyRate -= 30;
+			if (this.enemyRate === 0) {
+				window.alert("GGWP");
+				location.reload();
+			}
 		}
 	}
 }

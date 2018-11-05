@@ -8,6 +8,7 @@ window.onload = function () {
 		player.update();
 		princess.update();
 		canvas.enemies.forEach(enemy => enemy.update());
+		boss.update();
 	}
 	updateGame();
 
