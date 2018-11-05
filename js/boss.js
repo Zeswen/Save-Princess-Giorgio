@@ -1,12 +1,3 @@
-function getRndInteger(min, max) {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-
-function getRndArr(arr) {
-  return arr[Math.floor(Math.random() * 2)]
-}
-
-
 function Boss(canvas) {
   this.ctx = canvas.ctx;
   this.x = canvas.width / 2;
@@ -92,14 +83,23 @@ Boss.prototype.receiveDamage = function () {
   }
 }
 
+Boss.prototype.checkHp = function () {
+  if (this.hp <= 0) {
+    boss = undefined;
+    player.xp += 10000;
+    player.coins += 5000;
+  }
+}
+
 Boss.prototype.update = function () {
   if (waves === true) {
     if (canvas.enemyRate === 30) {
       this.receiveDamage();
+      this.checkHp();
       this.move();
       this.draw();
     }
   }
 }
 
-const boss = new Boss(canvas);
+boss = new Boss(canvas);
