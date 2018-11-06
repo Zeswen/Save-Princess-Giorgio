@@ -199,7 +199,7 @@ Player.prototype.levelUp = function () {
 }
 
 Player.prototype.enterShop = function () {
-	if (this.x  === canvas.width - 16 && this.y <= canvas.height / 2 + 50 && this.y >= canvas.height / 2 - 50) {
+	if (this.x  === canvas.width - 16 && this.y <= canvas.height / 2 + 25 && this.y >= canvas.height / 2 - 25) {
 		showShop();
 	}
 }

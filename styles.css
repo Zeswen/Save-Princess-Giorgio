@@ -3,7 +3,6 @@ body {
   padding: 0;
   box-sizing: content-box;
   background: url("./img/background.jpg") no-repeat;
-
 }
 
 #gameContainer {
@@ -11,11 +10,15 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
+  animation-name: fadeInOpacity;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-in;
+  animation-duration: 0.5s;
 }
 
 #myCanvas {
-  border-radius:2%;
-  box-shadow: 0px 30px 40px rgba(0,0,0,.5);
+  border-radius: 2%;
+  box-shadow: 0px 30px 40px rgba(0, 0, 0, .5);
 }
 
 #shopContainer {
@@ -53,16 +56,18 @@ body {
   cursor: pointer;
   background: url("./img/scroll.jpg");
   background-size: cover;
+  border-radius: 5%;
   opacity: 1;
   animation-name: fadeInOpacity;
   animation-iteration-count: 1;
   animation-timing-function: ease-in;
-  animation-duration: 1s;
-  box-shadow: 0px 30px 40px rgba(0,0,0,.5);
+  animation-duration: 0.5s;
+  box-shadow: 0px 30px 40px rgba(0, 0, 0, .5);
 }
 
 .sub-shop img {
   margin-bottom: 1.5rem;
+  border-radius: 10%;
 }
 
 .inner-shop {
@@ -73,26 +78,53 @@ body {
   animation-name: fadeInOpacity;
   animation-iteration-count: 1;
   animation-timing-function: ease-in;
-  animation-duration: 1s;
+  animation-duration: 0.5s;
 }
 
 li {
   list-style: none;
   margin: 1rem;
   display: flex;
-  justify-content: space-between
+  justify-content: space-between;
 }
 
 button {
   cursor: pointer;
+  background: white;
+  color: black;
+  border: none;
+  border-radius: 15%;
+  box-shadow: 0px 30px 40px rgba(0, 0, 0, .1);
 }
 
+button:hover {
+  background: rgb(200, 251, 255);
+  transition: linear 0.25s;
+}
+
+button:disabled {
+    background: rgb(200, 251, 255);
+}
+
+#skillPoints {
+  font-size: 1.5rem;
+  color: rgb(0, 130, 170);
+}
+
+.exitShop {
+  background: red;
+  color: white;
+  box-shadow: 0px 30px 40px rgba(0, 0, 0, .1);
+  width: 5rem;
+  height: 2rem;
+  margin-top: 1rem;
+  font-size: 1.25rem; 
+}
 
 @keyframes fadeInOpacity {
   0% {
     opacity: 0;
   }
-
   100% {
     opacity: 1;
   }
