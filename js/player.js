@@ -191,7 +191,7 @@ Player.prototype.checkHp = function () {
 }
 
 Player.prototype.levelUp = function () {
-	if (this.xp === 150) {
+	if (this.xp === 100) {
 		this.level += 1;
 		this.skillPoints += 1;
 		this.xp = 0;

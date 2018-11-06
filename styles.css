@@ -121,6 +121,10 @@ button:disabled {
   font-size: 1.25rem; 
 }
 
+.exitShop:hover {
+  background: darkred;
+}
+
 @keyframes fadeInOpacity {
   0% {
     opacity: 0;

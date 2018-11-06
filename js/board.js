@@ -40,7 +40,7 @@ Canvas.prototype.checkHp = function () {
 		if (enemy.hp <= 0) {
 			let enemyIndex = canvas.enemies.indexOf(enemy);
 			canvas.enemies.splice(enemyIndex, 1);
-			player.xp += 10;
+			player.xp += 25;
 			player.coins += 5;
 		}
 	})
@@ -54,7 +54,7 @@ Canvas.prototype.stopEnemySpawn = function () {
 		if (this.secCounter >= 1800) {
 			waves = false;
 			this.secCounter = 1;
-			this.enemyRate -= 30;
+			this.enemyRate -= 20;
 		}
 	}
 	if (this.enemyRate === 0 && this.enemies.length === 0 && boss === undefined) {
