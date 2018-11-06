@@ -9,8 +9,8 @@ function getRndArr(arr) {
 
 function Enemy(canvas) {
 	this.ctx = canvas.ctx;
-	this.x = getRndInteger(0, canvas.width);
-	this.y = getRndArr([0, canvas.height - 32]);
+	this.x = getRndInteger(0, canvas.width - 16);
+	this.y = getRndArr([0, canvas.height - 35]);
 	this.direction = "N";
 	this.width = 16;
 	this.height = 32;
@@ -19,7 +19,7 @@ function Enemy(canvas) {
 	this.maxXPos = canvas.width - this.width;
 	this.maxYPos = canvas.height - this.height;
 	this.class = "Warrior";
-	this.hp = 20;
+	this.hp = 25;
 	this.str = 5;
 }
 
@@ -29,21 +29,30 @@ Enemy.prototype.draw = function () {
 }
 
 Enemy.prototype.move = function () {
-	if (this.x < canvas.width / 2) {
-		this.x += 1;
-		this.direction = "W";
-	} else if (this.x > canvas.width / 2) {
-		this.x -= 1;
-		this.direction = "E";
-	} else if (this.y < canvas.height / 2) {
+	if (this.x === canvas.width / 2 && this.y < canvas.height / 2) {
 		this.y += 1;
-		this.direction = "S"
-	} else if (this.y > canvas.height / 2) {
+	} else if (this.x === canvas.width / 2 && this.y > canvas.height / 2) {
 		this.y -= 1;
-		this.direction = "N"
-	} else if (this.x === canvas.width / 2 && this.y === canvas.height / 2) {
-		this.x = canvas.width / 2;
-		this.y = canvas.height / 2;
+	} else if (this.x < canvas.width / 2 && this.y === canvas.height / 2) {
+		this.x += 1;
+	} else if (this.x > canvas.width / 2 && this.y === canvas.height / 2) {
+		this.x -= 1;
+	} else if (this.x < canvas.width / 2 && this.y > canvas.height / 2) {
+		this.x += 1;
+		this.y -= 1;
+		this.direction = "W";
+	} else if (this.x > canvas.width / 2 && this.y < canvas.height / 2) {
+		this.x -= 1;
+		this.y += 1;
+		this.direction = "E";
+	} else if (this.x < canvas.width / 2 && this.y < canvas.height / 2) {
+		this.y += 1;
+		this.x += 1;
+		this.direction = "S";
+	} else if (this.x > canvas.width / 2 && this.y > canvas.height / 2) {
+		this.y -= 1;
+		this.x -= 1;
+		this.direction = "N";
 	}
 }
 

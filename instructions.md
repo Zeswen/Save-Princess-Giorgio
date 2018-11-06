@@ -29,10 +29,10 @@
   }
 
   ###Store: where the player upgrades {
-    General Store (Juan): potions and consumables,
-    Weapon Store (Diego): upgrades to your weapons,
-    Armor Store (Teo): upgrade your armor,
-    Powerups (Gabi): gets you some stat boosts,
+    General Store (Juan): potions and consumables: Health potion,
+    Weapon Store (Diego): upgrades to your weapons: ,
+    Armor Store (Teo): upgrade your armor:,
+    Powerups (Gabi): gets you some stat boosts:,
   }
 
   ###Dark Room: after defeating the wave 5 {

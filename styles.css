@@ -2,6 +2,8 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: content-box;
+  background: url("./img/background.jpg") no-repeat;
+
 }
 
 #gameContainer {
@@ -9,4 +11,89 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
+}
+
+#myCanvas {
+  border-radius:2%;
+  box-shadow: 0px 30px 40px rgba(0,0,0,.5);
+}
+
+#shopContainer {
+  display: none;
+}
+
+.shop {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-size: cover;
+}
+
+.top {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bot {
+  display: flex;
+}
+
+.sub-shop {
+  display: flex;
+  width: 20rem;
+  height: 16rem;
+  margin: 1rem;
+  padding: 1rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  background: url("./img/scroll.jpg");
+  background-size: cover;
+  opacity: 1;
+  animation-name: fadeInOpacity;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-in;
+  animation-duration: 1s;
+  box-shadow: 0px 30px 40px rgba(0,0,0,.5);
+}
+
+.sub-shop img {
+  margin-bottom: 1.5rem;
+}
+
+.inner-shop {
+  display: none;
+  width: inherit;
+  height: inherit;
+  opacity: 1;
+  animation-name: fadeInOpacity;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-in;
+  animation-duration: 1s;
+}
+
+li {
+  list-style: none;
+  margin: 1rem;
+  display: flex;
+  justify-content: space-between
+}
+
+button {
+  margin-left: 1rem;
+  cursor: pointer;
+}
+
+@keyframes fadeInOpacity {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
 }

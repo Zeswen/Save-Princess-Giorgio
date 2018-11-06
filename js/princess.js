@@ -19,20 +19,20 @@ Princess.prototype.checkCollision = function () {
 		player.height + player.y >= this.y) {
 		switch (player.direction) {
 			case "E":
-				player.x += 5;
+				player.x += 3;
 				break;
 
 			case "W":
-				player.x -= 5;
+				player.x -= 3;
 				break;
 
 			case "N":
-				player.y += 5;
+				player.y += 3;
 				break;
 
 			case "S":
-				player.y -= 5;
-				break
+				player.y -= 3;
+				break;
 		}
 	}
 }

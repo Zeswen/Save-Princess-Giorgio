@@ -16,12 +16,15 @@ function Player(canvas) {
 	this.class = "Warrior";
 	this.xp = 0;
 	this.level = 1;
+	this.skillPoints = 0;
 	this.coins = 0;
 	this.hp = 100;
+	this.maxHp = 100;
 	this.str = 5;
 	this.dex = 5;
 	this.attacks = false;
 	this.skill = "Roar";
+	this.counter = 1;
 }
 
 Player.prototype.draw = function () {
@@ -102,28 +105,31 @@ Player.prototype.interact = function () {
 }
 
 Player.prototype.attack = function () {
+	this.counter += 1;
 	if (keys[88]) {
-		this.attacks = true;
-		switch (this.direction) {
-			case "N":
-		this.ctx.fillRect(this.x - 8, this.y - this.width, this.height, this.width);
-			break;
+		if (this.counter > this.dex) {
+			this.attacks = true;
+			this.counter = 1;
+			switch (this.direction) {
+				case "N":
+					this.ctx.fillRect(this.x - 8, this.y - this.width, this.height, this.width);
+					break;
 
-			case "E":
-		this.ctx.fillRect(this.x - this.width, this.y, this.width, this.height);
-			break;
+				case "E":
+					this.ctx.fillRect(this.x - this.width, this.y, this.width, this.height);
+					break;
 
-			case "S":
-		this.ctx.fillRect(this.x - 8, this.y + this.height, this.height, this.width);
-			break;
+				case "S":
+					this.ctx.fillRect(this.x - 8, this.y + this.height, this.height, this.width);
+					break;
 
-			case "W":
-		this.ctx.fillRect(this.x + this.width, this.y, this.width, this.height);
-			break;
-
+				case "W":
+					this.ctx.fillRect(this.x + this.width, this.y, this.width, this.height);
+					break;
+			}
+		} else {
+			this.attacks = false;
 		}
-	} else {
-		this.attacks = false;
 	}
 }
 
@@ -153,6 +159,29 @@ Player.prototype.receiveDamage = function () {
 			}
 		}
 	})
+	if (this.x + this.width >= boss.x &&
+		boss.x + boss.width >= this.x &&
+		this.y + this.height >= boss.y &&
+		boss.height + boss.y >= this.y) {
+		this.hp -= boss.str;
+		switch (boss.direction) {
+			case "E":
+				this.x -= 15;
+				break;
+
+			case "W":
+				this.x += 15;
+				break;
+
+			case "N":
+				this.y -= 15;
+				break;
+
+			case "S":
+				this.y += 15;
+				break
+		}
+	}
 }
 
 Player.prototype.checkHp = function () {
@@ -161,15 +190,23 @@ Player.prototype.checkHp = function () {
 	}
 }
 
-Player.prototype.levelUp = function ()  {
+Player.prototype.levelUp = function () {
 	if (this.xp === 150) {
 		this.level += 1;
+		this.skillPoints += 1;
 		this.xp = 0;
+	}
+}
+
+Player.prototype.enterShop = function () {
+	if (this.x  === canvas.width - 16 && this.y <= canvas.height / 2 + 50 && this.y >= canvas.height / 2 - 50) {
+		showShop();
 	}
 }
 
 Player.prototype.update = function () {
 	this.move();
+	this.enterShop();
 	this.receiveDamage();
 	this.checkHp();
 	this.interact();

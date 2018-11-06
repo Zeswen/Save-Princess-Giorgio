@@ -13,8 +13,59 @@
 	<div id="gameContainer">
 		<canvas id="myCanvas" width="720" height="480"></canvas>
 	</div>
+	<div class="shop">
+			<button class="exitShop">Exit</button>
+		<div class="top">
+			<div class="sub-shop juan">
+				<h1>General</h1>
+				<img width=80% height=80% src="./img/Juan.jpeg" alt="general">
+				<div class="general inner-shop">
+					<ul>
+						<li>Health Potion <button id="healthPot">25 coins</button></li>
+						<li>Princess' Health Potion <button id="princessPot">50 coins</button></li>
+					</ul>
+				</div>
+			</div>
+			<div class="sub-shop diego">
+				<h1>Weapons</h1>
+				<img width=80% height=80% src="./img/Diego.jpeg" alt="weapon">
+				<div class="weapon inner-shop">
+					<ul>
+						<li>Master Sword <span>+5 Str</span><button id="sword1">50 coins</button></li>
+						<li>Tempered Sword <span>+15 Str</span><button id="sword2">150 coins</button></li>
+						<li>Golden Sword<span>+50 Str</span><button id="sword3">300 coins</button></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="bot">
+			<div class="sub-shop teo">
+				<h1>Armors</h1>
+				<img width=80% height=80% src="./img/Teo.jpeg" alt="armor">
+				<div class="armor inner-shop">
+					<ul>
+						<li>Iron Armor <span>+50 MaxHP</span><button id="iron">250 coins</button></li>
+						<li>Steel Armor <span>+250 MaxHP</span><button id="steel">500 coins</button></li>
+					</ul>
+				</div>
+			</div>
+			<div class="sub-shop gabi">
+				<h1>Skills</h1>
+				<img width=80% height=80% src="./img/Gabi.jpeg" alt="skill">
+				<div class="skills inner-shop">
+					<ul>
+						<li>Skill Points:</li>
+						<li>Strength+ <button id="strUp">+1</button></li>
+						<li>HP+ <button id="hpUp">+10</button></li>
+						<li>Dextery+ <button id="dexUp">+1</button></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
 
 	<script src="./js/board.js"></script>
+	<script src="./js/shop.js"></script>
 	<script src="./js/player.js"></script>
 	<script src="./js/bullet.js"></script>
 	<script src="./js/princess.js"></script>
