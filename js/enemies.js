@@ -9,7 +9,7 @@ function getRndArr(arr) {
 
 function Enemy(canvas) {
 	this.ctx = canvas.ctx;
-	this.x = getRndInteger(0, canvas.width - 16);
+	this.x = getRndInteger(43, canvas.width - 16);
 	this.y = getRndArr([0, canvas.height - 35]);
 	this.direction = "N";
 	this.width = 16;
@@ -65,7 +65,7 @@ Enemy.prototype.receiveDamage = function () {
 					this.y + this.height >= player.y &&
 					player.height + player.y >= this.y) {
 					this.hp -= player.str;
-					this.x -= 10;
+					this.x -= 5;
 				}
 				break;
 
@@ -75,7 +75,7 @@ Enemy.prototype.receiveDamage = function () {
 					this.y + this.height >= player.y &&
 					player.height + player.y >= this.y) {
 					this.hp -= player.str;
-					this.x += 10;
+					this.x += 5;
 				}
 				break;
 
@@ -85,7 +85,7 @@ Enemy.prototype.receiveDamage = function () {
 					this.y + this.height + 10 >= player.y &&
 					player.height + player.y >= this.y) {
 					this.hp -= player.str;
-					this.y -= 10;
+					this.y -= 5;
 				}
 				break;
 
@@ -95,7 +95,7 @@ Enemy.prototype.receiveDamage = function () {
 					this.y + this.height >= player.y &&
 					player.height + player.y + 10 >= this.y) {
 					this.hp -= player.str;
-					this.y += 10;
+					this.y += 5;
 				}
 				break;
 		}

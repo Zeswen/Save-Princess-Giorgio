@@ -15,8 +15,7 @@ document.querySelector(".exitShop").onclick = function () {
   document.querySelector(".armor").style.display = "none";
   document.querySelector(".gabi > img").style.display = "block";
   document.querySelector(".skills").style.display = "none";
-  player.x = canvas.width / 2;
-  player.y = canvas.height / 2 + 50; 
+  player.x -= 25;
 }
 
 document.querySelector(".juan").onclick = function () {

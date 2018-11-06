@@ -6,7 +6,7 @@ function Canvas() {
 	this.width = 720;
 	this.height = 480;
 	this.img = new Image();
-	this.img.src = './img/wood-background.png'
+	this.img.src = './img/canvas-bg.png'
 	this.counter = 1;
 	this.secCounter = 1;
 	this.enemyRate = 180;

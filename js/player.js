@@ -8,7 +8,7 @@ function Player(canvas) {
 	this.velY = 0;
 	this.speed = 3;
 	this.friction = 0.75;
-	this.minXPos = 0;
+	this.minXPos = 43;
 	this.minYPos = 0;
 	this.maxXPos = canvas.width - this.width;
 	this.maxYPos = canvas.height - this.height;
@@ -21,7 +21,7 @@ function Player(canvas) {
 	this.hp = 100;
 	this.maxHp = 100;
 	this.str = 5;
-	this.dex = 5;
+	this.dex = 4;
 	this.attacks = false;
 	this.skill = "Roar";
 	this.counter = 1;
@@ -199,8 +199,8 @@ Player.prototype.levelUp = function () {
 }
 
 Player.prototype.enterShop = function () {
-	if (this.x  === canvas.width - 16 && this.y <= canvas.height / 2 + 25 && this.y >= canvas.height / 2 - 25) {
-		showShop();
+	if (this.x > canvas.width - 32 && this.y <= canvas.height / 2 + 25 && this.y >= canvas.height / 2 - 25) {
+		if (waves === false) showShop();
 	}
 }
 
