@@ -8,11 +8,12 @@
 	<title>Save Princess Giorgio</title>
 	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 	<link rel="stylesheet" href="./styles.css">
-	<link rel="icon" href="./img/Giorgio.png">
+	<link rel="icon" href="./img/Icon.png">
 </head>
 
 <body>
 	<div class="hud">
+		<h1>Wave <span id="waveCounter">1</span></h1>
 		<div class="health-bar" data-total="100" data-value="100">
 			<div class="bar"></div>
 		</div>
@@ -26,11 +27,12 @@
 			<img src="img/coin.png" alt="Coin"><span>0</span>
 		</div>
 		<div class="level">
-		 <span>Lv: </span><span id="myLevel">1</span>
+			<span>Lv: </span><span id="myLevel">1</span>
 		</div>
 	</div>
 	</div>
-
+	
+	<div class="dialog"></div>
 
 	<div id="gameContainer">
 		<canvas id="myCanvas" width="720" height="480"></canvas>
@@ -88,6 +90,7 @@
 
 	<script src="./js/board.js"></script>
 	<script src="./js/shop.js"></script>
+	<script src="./js/animations.js"></script>
 	<script src="./js/player.js"></script>
 	<script src="./js/bullet.js"></script>
 	<script src="./js/princess.js"></script>

@@ -7,6 +7,17 @@ body {
   font-family: Roboto;
 }
 
+.dialog {
+  background: url("./img/princess-dialog.png") no-repeat;
+  width: 320px;
+  height: 160px;
+  position: absolute;
+  top: 150px;
+  left: 535px;
+  opacity: 0;
+  transition: all 1s;
+}
+
 #gameContainer {
   display: flex;
   justify-content: center;
@@ -66,6 +77,11 @@ body {
   animation-timing-function: ease-in;
   animation-duration: 0.5s;
   box-shadow: 0px 30px 40px rgba(0, 0, 0, .5);
+}
+
+.sub-shop h1 {
+  color: white;
+  text-shadow: 2px 2px black;
 }
 
 .sub-shop img {
@@ -240,5 +256,14 @@ button:disabled {
   }
   100% {
     opacity: 1;
+  }
+}
+
+@keyframes fadeOutOpacity {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
   }
 }

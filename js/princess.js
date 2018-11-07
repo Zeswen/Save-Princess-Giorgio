@@ -2,22 +2,18 @@ function Princess(canvas) {
 	this.ctx = canvas.ctx;
 	this.x = canvas.width / 2;
 	this.y = canvas.height / 2;
-	this.width = 16;
+	this.width = 24;
 	this.height = 32;
 	this.maxHp = 300;
 	this.hp = 300;
-}
-
-Princess.prototype.draw = function () {
-	this.ctx.fillStyle = "pink";
-	this.ctx.fillRect(this.x, this.y, this.width, this.height);
+	this.interacted = false;
 }
 
 Princess.prototype.checkCollision = function () {
-	if (this.x + this.width >= player.x &&
-		player.x + player.width>= this.x &&
-		this.y + this.height >= player.y &&
-		player.height + player.y >= this.y) {
+	if (this.x + this.width - 5 >= player.x &&
+		player.x + player.width>= this.x + 5 &&
+		this.y + this.height - 5 >= player.y &&
+		player.height + player.y - 5 >= this.y) {
 			player.velY = 0;
 			player.velX = 0;
 		switch (player.direction) {
@@ -81,12 +77,21 @@ Princess.prototype.showHp = function () {
 	document.querySelector(".bar-princess").style.width = (this.hp / this.maxHp) * 100 + "%";
 }
 
+Princess.prototype.showDialog = function () {
+	if (this.interacted) {
+		document.querySelector(".dialog").style.opacity = 1;
+		setTimeout(() => document.querySelector(".dialog").style.opacity = 0, 1500);
+		setTimeout(() => document.querySelector(".dialog").style.display = "none", 2500);
+		this.interacted = false;
+	}
+}
+
 Princess.prototype.update = function () {
-	this.draw();
 	this.checkCollision();
 	this.receiveDamage();
 	this.checkHp();
 	this.showHp();
+	this.showDialog();
 }
 
 const princess = new Princess(canvas);

@@ -2,7 +2,7 @@ function Player(canvas) {
 	this.ctx = canvas.ctx;
 	this.x = canvas.width / 2;
 	this.y = canvas.height / 2 + 50;
-	this.width = 16;
+	this.width = 24;
 	this.height = 32;
 	this.velX = 0;
 	this.velY = 0;
@@ -13,7 +13,6 @@ function Player(canvas) {
 	this.maxXPos = canvas.width - this.width;
 	this.maxYPos = canvas.height - this.height;
 	this.direction = "N";
-	this.class = "Warrior";
 	this.maxXp = 100;
 	this.xp = 0;
 	this.level = 1;
@@ -24,42 +23,55 @@ function Player(canvas) {
 	this.str = 5;
 	this.dex = 4;
 	this.attacks = false;
-	this.skill = "Roar";
 	this.counter = 1;
+	this.moving = false;
 }
 
-Player.prototype.draw = function () {
-	this.ctx.fillStyle = "cyan";
-	this.ctx.fillRect(this.x, this.y, this.width, this.height);
+Player.prototype.idle = function () {
+	if (this.moving === false) {
+		animations.playerDraw();
+	}
 }
 
 Player.prototype.move = function () {
-	if (keys[38]) {
-		if (this.velY > -this.speed) {
-			this.velY--;
-			this.direction = "N";
+	if (keys[37] || keys[38] || keys[39] || keys[40]) {
+		if (keys[38]) {
+			if (this.velY > -this.speed) {
+				this.velY--;
+				this.direction = "N";
+				animations.movePlayerDraw();
+				this.moving = true;
+			}
 		}
-	}
 
-	if (keys[40]) {
-		if (this.velY < this.speed) {
-			this.velY++;
-			this.direction = "S";
+		if (keys[40]) {
+			if (this.velY < this.speed) {
+				this.velY++;
+				this.direction = "S";
+				animations.movePlayerDraw();
+				this.moving = true;
+			}
 		}
-	}
 
-	if (keys[39]) {
-		if (this.velX < this.speed) {
-			this.velX++;
-			this.direction = "W";
+		if (keys[39]) {
+			if (this.velX < this.speed) {
+				this.velX++;
+				this.direction = "W";
+				animations.movePlayerDraw();
+				this.moving = true;
+			}
 		}
-	}
 
-	if (keys[37]) {
-		if (this.velX > -this.speed) {
-			this.velX--;
-			this.direction = "E";
+		if (keys[37]) {
+			if (this.velX > -this.speed) {
+				this.velX--;
+				this.direction = "E";
+				animations.movePlayerDraw();
+				this.moving = true;
+			}
 		}
+	} else {
+		this.moving = false;
 	}
 }
 
@@ -99,6 +111,7 @@ Player.prototype.interact = function () {
 			this.y + this.height >= princess.y &&
 			princess.height + princess.y + 15 >= this.y) {
 			waves = true;
+			princess.interacted = true;
 		}
 	}
 }
@@ -111,19 +124,23 @@ Player.prototype.attack = function () {
 			this.counter = 1;
 			switch (this.direction) {
 				case "N":
-					this.ctx.fillRect(this.x - 8, this.y - this.width, this.height, this.width);
+					this.ctx.drawImage(animations.attackSwingB, this.x, this.y, this.width, this.height)
+					this.ctx.drawImage(animations.swordSwingB, this.x + 5, this.y - this.height + 17, this.height, this.width);
 					break;
 
 				case "E":
-					this.ctx.fillRect(this.x - this.width, this.y, this.width, this.height);
+					this.ctx.drawImage(animations.attackSwingL, this.x, this.y, this.width, this.height)
+					this.ctx.drawImage(animations.swordSwingL, this.x - this.width + 5, this.y, this.width, this.height);
 					break;
 
 				case "S":
-					this.ctx.fillRect(this.x - 8, this.y + this.height, this.height, this.width);
+					this.ctx.drawImage(animations.attackSwingF, this.x, this.y, this.width, this.height)
+					this.ctx.drawImage(animations.swordSwingF, this.x - 5, this.y + this.height - 5, this.height, this.width);
 					break;
 
 				case "W":
-					this.ctx.fillRect(this.x + this.width, this.y, this.width, this.height);
+					this.ctx.drawImage(animations.attackSwingR, this.x, this.y, this.width, this.height)
+					this.ctx.drawImage(animations.swordSwingR, this.x + this.width - 3, this.y + 10, this.width, this.height);
 					break;
 			}
 		} else {
@@ -228,6 +245,7 @@ Player.prototype.enterShop = function () {
 }
 
 Player.prototype.update = function () {
+	this.idle();
 	this.move();
 	this.enterShop();
 	this.receiveDamage();
@@ -236,12 +254,11 @@ Player.prototype.update = function () {
 	this.attack();
 	this.speedMod();
 	this.updatePos();
-	this.draw();
 	this.levelUp();
 	this.showHp();
 	this.showXp();
 	this.showCoins();
-	this.showLvl()
+	this.showLvl();
 }
 
 const player = new Player(canvas);

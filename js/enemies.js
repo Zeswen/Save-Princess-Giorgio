@@ -12,7 +12,7 @@ function Enemy(canvas) {
 	this.x = getRndInteger(43, canvas.width - 16);
 	this.y = getRndArr([0, canvas.height - 35]);
 	this.direction = "N";
-	this.width = 16;
+	this.width = 24;
 	this.height = 32;
 	this.minXPos = 0;
 	this.minYPos = 0;
@@ -21,11 +21,6 @@ function Enemy(canvas) {
 	this.class = "Warrior";
 	this.hp = 25;
 	this.str = 5;
-}
-
-Enemy.prototype.draw = function () {
-	this.ctx.fillStyle = "red";
-	this.ctx.fillRect(this.x, this.y, this.width, this.height);
 }
 
 Enemy.prototype.move = function () {
@@ -105,5 +100,4 @@ Enemy.prototype.receiveDamage = function () {
 Enemy.prototype.update = function () {
 	this.receiveDamage();
 	this.move();
-	this.draw();
 }

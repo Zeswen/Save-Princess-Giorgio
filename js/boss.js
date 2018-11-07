@@ -1,9 +1,9 @@
 function Boss(canvas) {
   this.ctx = canvas.ctx;
-  this.x = canvas.width / 2;
+  this.x = canvas.width / 2 - 30;
   this.y = 0;
   this.direction = "N";
-  this.width = 32;
+  this.width = 96;
   this.height = 64;
   this.minXPos = 0;
   this.minYPos = 0;
@@ -13,24 +13,19 @@ function Boss(canvas) {
   this.str = 50;
 }
 
-Boss.prototype.draw = function () {
-  this.ctx.fillStyle = "purple";
-  this.ctx.fillRect(this.x, this.y, this.width, this.height);
-}
-
 Boss.prototype.move = function () {
-  if (this.x < canvas.width / 2) {
-    this.x += 0.25;
-    this.direction = "W";
-  } else if (this.x > canvas.width / 2) {
-    this.x -= 0.25;
-    this.direction = "E";
-  } else if (this.y < canvas.height / 2) {
-    this.y += 0.25;
+  if (this.y < canvas.height / 2) {
+    this.y += 0.15;
     this.direction = "S"
   } else if (this.y > canvas.height / 2) {
-    this.y -= 0.25;
+    this.y -= 0.15;
     this.direction = "N"
+  } else if (this.x < canvas.width / 2) {
+    this.x += 0.15;
+    this.direction = "W";
+  } else if (this.x > canvas.width / 2) {
+    this.x -= 0.15;
+    this.direction = "E";
   } else if (this.x === canvas.width / 2 && this.y === canvas.height / 2) {
     this.x = canvas.width / 2;
     this.y = canvas.height / 2;
@@ -96,7 +91,6 @@ Boss.prototype.update = function () {
     this.receiveDamage();
     this.checkHp();
     this.move();
-    this.draw();
   }
 }
 

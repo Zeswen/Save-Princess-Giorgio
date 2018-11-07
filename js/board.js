@@ -9,6 +9,7 @@ function Canvas() {
 	this.img.src = './img/canvas-bg.png'
 	this.counter = 1;
 	this.secCounter = 1;
+	this.wave = 1;
 	this.enemyRate = 180;
 	this.enemies = [];
 }
@@ -55,6 +56,10 @@ Canvas.prototype.stopEnemySpawn = function () {
 			waves = false;
 			this.secCounter = 1;
 			this.enemyRate -= 20;
+			this.wave += 1;
+			(this.wave >= 8)
+			? document.querySelector(".hud>h1").innerHTML = "Final Wave"
+			: document.querySelector("#waveCounter").innerHTML = this.wave;
 		}
 	}
 	if (this.enemyRate === 20 && this.enemies.length === 0 && boss === undefined) {
