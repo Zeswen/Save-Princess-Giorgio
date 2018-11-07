@@ -92,13 +92,11 @@ Boss.prototype.checkHp = function () {
 }
 
 Boss.prototype.update = function () {
-  if (waves === true) {
-    if (canvas.enemyRate === 20) {
-      this.receiveDamage();
-      this.checkHp();
-      this.move();
-      this.draw();
-    }
+  if (waves === true && canvas.enemyRate === 40 && boss) {
+    this.receiveDamage();
+    this.checkHp();
+    this.move();
+    this.draw();
   }
 }
 

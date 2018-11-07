@@ -6,24 +6,45 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>Save Princess Giorgio</title>
+	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 	<link rel="stylesheet" href="./styles.css">
 	<link rel="icon" href="./img/Giorgio.png">
 </head>
 
 <body>
+	<div class="hud">
+		<div class="health-bar" data-total="100" data-value="100">
+			<div class="bar"></div>
+		</div>
+		<div class="health-bar-princess" data-total="100" data-value="100">
+			<div class="bar-princess"></div>
+		</div>
+		<div class="xp-bar" data-total="100" data-value="0">
+			<div class="bar-xp"></div>
+		</div>
+		<div class="coins">
+			<img src="img/coin.png" alt="Coin"><span>0</span>
+		</div>
+		<div class="level">
+		 <span>Lv: </span><span id="myLevel">1</span>
+		</div>
+	</div>
+	</div>
+
+
 	<div id="gameContainer">
 		<canvas id="myCanvas" width="720" height="480"></canvas>
 	</div>
 	<div class="shop">
-			<button class="exitShop">Exit</button>
+		<button class="exitShop">Exit</button>
 		<div class="top">
 			<div class="sub-shop juan">
 				<h1>General</h1>
 				<img width=80% height=80% src="./img/Juan.jpeg" alt="general">
 				<div class="general inner-shop">
 					<ul>
-						<li>Health Potion <button id="healthPot">25 coins</button></li>
-						<li>Princess' Health Potion <button id="princessPot">50 coins</button></li>
+						<li>Health Potion <button id="healthPot">10 coins</button></li>
+						<li>Princess' Health Potion <button id="princessPot">20 coins</button></li>
 					</ul>
 				</div>
 			</div>

@@ -4,6 +4,7 @@ function Princess(canvas) {
 	this.y = canvas.height / 2;
 	this.width = 16;
 	this.height = 32;
+	this.maxHp = 300;
 	this.hp = 300;
 }
 
@@ -14,24 +15,26 @@ Princess.prototype.draw = function () {
 
 Princess.prototype.checkCollision = function () {
 	if (this.x + this.width >= player.x &&
-		player.x + player.width >= this.x &&
+		player.x + player.width>= this.x &&
 		this.y + this.height >= player.y &&
 		player.height + player.y >= this.y) {
+			player.velY = 0;
+			player.velX = 0;
 		switch (player.direction) {
 			case "E":
-				player.x += 2;
+				player.x += 3;
 				break;
 
 			case "W":
-				player.x -= 2;
+				player.x -= 3;
 				break;
 
 			case "N":
-				player.y += 2;
+				player.y += 3;
 				break;
 
 			case "S":
-				player.y -= 2;
+				player.y -= 3;
 				break;
 		}
 	}
@@ -72,11 +75,18 @@ Princess.prototype.checkHp = function () {
 	}
 }
 
+Princess.prototype.showHp = function () {
+	document.querySelector(".health-bar-princess").dataset.total = this.maxHp;
+	document.querySelector(".health-bar-princess").dataset.value = this.hp;
+	document.querySelector(".bar-princess").style.width = (this.hp / this.maxHp) * 100 + "%";
+}
+
 Princess.prototype.update = function () {
 	this.draw();
 	this.checkCollision();
 	this.receiveDamage();
 	this.checkHp();
+	this.showHp();
 }
 
 const princess = new Princess(canvas);

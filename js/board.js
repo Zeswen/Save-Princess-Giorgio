@@ -57,7 +57,7 @@ Canvas.prototype.stopEnemySpawn = function () {
 			this.enemyRate -= 20;
 		}
 	}
-	if (this.enemyRate === 0 && this.enemies.length === 0 && boss === undefined) {
+	if (this.enemyRate === 20 && this.enemies.length === 0 && boss === undefined) {
 		window.alert("GGWP");
 		location.reload();
 	}

@@ -14,6 +14,7 @@ function Player(canvas) {
 	this.maxYPos = canvas.height - this.height;
 	this.direction = "N";
 	this.class = "Warrior";
+	this.maxXp = 100;
 	this.xp = 0;
 	this.level = 1;
 	this.skillPoints = 0;
@@ -70,16 +71,6 @@ Player.prototype.speedMod = function () {
 }
 
 Player.prototype.updatePos = function () {
-
-	if (this.x + this.width >= princess.x &&
-		princess.x + princess.width >= this.x &&
-		this.y + this.height >= princess.y &&
-		princess.height + princess.y >= this.y) {
-		this.velY = 0;
-		this.velX = 0;
-	}
-
-
 	if (this.x > this.maxXPos) {
 		this.x = this.maxXPos;
 	} else if (this.x < this.minXPos) {
@@ -90,6 +81,14 @@ Player.prototype.updatePos = function () {
 		this.y = this.maxYPos;
 	} else if (this.y < this.minYPos) {
 		this.y = this.minYPos;
+	}
+
+	if (this.y > 178 && this.y < 235 && this.x > 677) {
+		this.y += 5;
+		this.x -= 5;
+	} else if (this.y > 245 && this.y < 310 && this.x > 677) {
+		this.y -= 5;
+		this.x -= 5;
 	}
 }
 
@@ -134,52 +133,56 @@ Player.prototype.attack = function () {
 }
 
 Player.prototype.receiveDamage = function () {
-	canvas.enemies.forEach(enemy => {
-		if (this.x + this.width >= enemy.x &&
-			enemy.x + enemy.width >= this.x &&
-			this.y + this.height >= enemy.y &&
-			enemy.height + enemy.y >= this.y) {
-			this.hp -= enemy.str;
-			switch (enemy.direction) {
-				case "E":
-					this.x -= 10;
-					break;
+	if (waves === true) {
+		canvas.enemies.forEach(enemy => {
+			if (this.x + this.width >= enemy.x &&
+				enemy.x + enemy.width >= this.x &&
+				this.y + this.height >= enemy.y &&
+				enemy.height + enemy.y >= this.y) {
+				this.hp -= enemy.str;
+				switch (enemy.direction) {
+					case "E":
+						this.x -= 10;
+						break;
 
-				case "W":
-					this.x += 10;
-					break;
+					case "W":
+						this.x += 10;
+						break;
 
-				case "N":
-					this.y -= 10;
-					break;
+					case "N":
+						this.y -= 10;
+						break;
 
-				case "S":
-					this.y += 10;
-					break
+					case "S":
+						this.y += 10;
+						break
+				}
 			}
-		}
-	})
-	if (this.x + this.width >= boss.x &&
-		boss.x + boss.width >= this.x &&
-		this.y + this.height >= boss.y &&
-		boss.height + boss.y >= this.y) {
-		this.hp -= boss.str;
-		switch (boss.direction) {
-			case "E":
-				this.x -= 15;
-				break;
+		})
+		if (boss) {
+			if (this.x + this.width >= boss.x &&
+				boss.x + boss.width >= this.x &&
+				this.y + this.height >= boss.y &&
+				boss.height + boss.y >= this.y) {
+				this.hp -= boss.str;
+				switch (boss.direction) {
+					case "E":
+						this.x -= 15;
+						break;
 
-			case "W":
-				this.x += 15;
-				break;
+					case "W":
+						this.x += 15;
+						break;
 
-			case "N":
-				this.y -= 15;
-				break;
+					case "N":
+						this.y -= 15;
+						break;
 
-			case "S":
-				this.y += 15;
-				break
+					case "S":
+						this.y += 15;
+						break
+				}
+			}
 		}
 	}
 }
@@ -191,11 +194,31 @@ Player.prototype.checkHp = function () {
 }
 
 Player.prototype.levelUp = function () {
-	if (this.xp === 100) {
+	if (this.xp >= this.maxXp) {
 		this.level += 1;
 		this.skillPoints += 1;
-		this.xp = 0;
+		this.xp -= this.maxXp;
 	}
+}
+
+Player.prototype.showHp = function () {
+	document.querySelector(".health-bar").dataset.total = this.maxHp;
+	document.querySelector(".health-bar").dataset.value = this.hp;
+	document.querySelector(".bar").style.width = (this.hp / this.maxHp) * 100 + "%";
+}
+
+Player.prototype.showXp = function () {
+	document.querySelector(".xp-bar").dataset.total = this.maxXp;
+	document.querySelector(".xp-bar").dataset.value = this.xp;
+	document.querySelector(".bar-xp").style.width = (this.xp / this.maxXp) * 100 + "%";
+}
+
+Player.prototype.showCoins = function () {
+	document.querySelector(".coins>span").innerHTML = this.coins;
+}
+
+Player.prototype.showLvl = function () {
+	document.querySelector("#myLevel").innerHTML = this.level;
 }
 
 Player.prototype.enterShop = function () {
@@ -215,6 +238,10 @@ Player.prototype.update = function () {
 	this.updatePos();
 	this.draw();
 	this.levelUp();
+	this.showHp();
+	this.showXp();
+	this.showCoins();
+	this.showLvl()
 }
 
 const player = new Player(canvas);
