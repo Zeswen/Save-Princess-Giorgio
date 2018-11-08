@@ -41,6 +41,8 @@ Boss.prototype.receiveDamage = function () {
           this.y + this.height >= player.y &&
           player.height + player.y >= this.y) {
           this.hp -= player.str;
+          this.ctx.fillStyle = "rgba(255, 0, 0, 0.3)"
+          this.ctx.fillRect(this.x, this.y, this.width, this.height);
           this.x -= 5;
         }
         break;
@@ -51,6 +53,8 @@ Boss.prototype.receiveDamage = function () {
           this.y + this.height >= player.y &&
           player.height + player.y >= this.y) {
           this.hp -= player.str;
+          this.ctx.fillStyle = "rgba(255, 0, 0, 0.3)"
+          this.ctx.fillRect(this.x, this.y, this.width, this.height);
           this.x += 5;
         }
         break;
@@ -61,6 +65,8 @@ Boss.prototype.receiveDamage = function () {
           this.y + this.height + 10 >= player.y &&
           player.height + player.y >= this.y) {
           this.hp -= player.str;
+          this.ctx.fillStyle = "rgba(255, 0, 0, 0.3)"
+          this.ctx.fillRect(this.x, this.y, this.width, this.height);
           this.y -= 5;
         }
         break;
@@ -71,6 +77,8 @@ Boss.prototype.receiveDamage = function () {
           this.y + this.height >= player.y &&
           player.height + player.y + 10 >= this.y) {
           this.hp -= player.str;
+          this.ctx.fillStyle = "rgba(255, 0, 0, 0.3)"
+          this.ctx.fillRect(this.x, this.y, this.width, this.height);
           this.y += 5;
         }
         break;
@@ -87,7 +95,9 @@ Boss.prototype.checkHp = function () {
 }
 
 Boss.prototype.update = function () {
-  if (waves === true && canvas.enemyRate === 40 && boss) {
+  if (waves === true && canvas.enemyRate === 60 && boss) {
+    audios.backgroundMusic.pause();
+    audios.bossSong.play();
     this.receiveDamage();
     this.checkHp();
     this.move();

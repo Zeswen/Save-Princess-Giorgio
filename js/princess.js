@@ -44,6 +44,8 @@ Princess.prototype.receiveDamage = function () {
 			this.y + this.height >= enemy.y &&
 			enemy.height + enemy.y >= this.y) {
 			this.hp -= enemy.str;
+			this.ctx.fillStyle = "rgba(255, 0, 0, 0.2)"
+			this.ctx.fillRect(this.x, this.y, this.width, this.height);
 			switch (enemy.direction) {
 				case "E":
 					enemy.x += 5;

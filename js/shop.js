@@ -5,6 +5,9 @@ document.querySelector("#skillPoints").innerHTML = player.skillPoints;
 }
 
 document.querySelector(".exitShop").onclick = function () {
+  audios.shopMusic.pause();
+  audios.shopMusic.currentTime = 0;
+  audios.backgroundMusic.play();
   document.querySelector("#gameContainer").style.display = "flex";
   document.querySelector(".shop").style.display = "none";
   document.querySelector(".juan > img").style.display = "block";

@@ -12,9 +12,7 @@ window.onload = function () {
 		animations.update();
 	}
 	updateGame();
-
 }
-
 
 document.addEventListener("keydown", function (e) {
 	keys[e.keyCode] = true;

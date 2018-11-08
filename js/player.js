@@ -122,6 +122,7 @@ Player.prototype.attack = function () {
 		if (this.counter > this.dex) {
 			this.attacks = true;
 			this.counter = 1;
+			audios.swordSound.play();
 			switch (this.direction) {
 				case "N":
 					this.ctx.drawImage(animations.attackSwingB, this.x, this.y, this.width, this.height)
@@ -157,6 +158,9 @@ Player.prototype.receiveDamage = function () {
 				this.y + this.height >= enemy.y &&
 				enemy.height + enemy.y >= this.y) {
 				this.hp -= enemy.str;
+				audios.playerHit.play();
+				this.ctx.fillStyle = "rgba(255, 0, 0, 0.3)"
+				this.ctx.fillRect(this.x, this.y, this.width, this.height);
 				switch (enemy.direction) {
 					case "E":
 						this.x -= 10;
@@ -182,6 +186,9 @@ Player.prototype.receiveDamage = function () {
 				this.y + this.height >= boss.y &&
 				boss.height + boss.y >= this.y) {
 				this.hp -= boss.str;
+				audios.playerHit.play();
+				this.ctx.fillStyle = "rgba(255, 0, 0, 0.3)"
+				this.ctx.fillRect(this.x, this.y, this.width, this.height);
 				switch (boss.direction) {
 					case "E":
 						this.x -= 15;
@@ -206,7 +213,7 @@ Player.prototype.receiveDamage = function () {
 
 Player.prototype.checkHp = function () {
 	if (this.hp <= 0) {
-		location.reload();
+		audios.playerDies.play();
 	}
 }
 
@@ -240,7 +247,12 @@ Player.prototype.showLvl = function () {
 
 Player.prototype.enterShop = function () {
 	if (this.x > canvas.width - 32 && this.y <= canvas.height / 2 + 25 && this.y >= canvas.height / 2 - 25) {
-		if (waves === false) showShop();
+		if (waves === false) {
+			audios.backgroundMusic.pause();
+			audios.backgroundMusic.currentTime = 0;
+			audios.shopMusic.play();
+			showShop();
+		}
 	}
 }
 

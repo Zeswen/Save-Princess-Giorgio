@@ -60,6 +60,9 @@ Enemy.prototype.receiveDamage = function () {
 					this.y + this.height >= player.y &&
 					player.height + player.y >= this.y) {
 					this.hp -= player.str;
+					audios.enemyHit.play();
+					this.ctx.fillStyle = "rgba(255, 0, 0, 0.3)"
+					this.ctx.fillRect(this.x, this.y, this.width, this.height);
 					this.x -= 5;
 				}
 				break;
@@ -70,6 +73,9 @@ Enemy.prototype.receiveDamage = function () {
 					this.y + this.height >= player.y &&
 					player.height + player.y >= this.y) {
 					this.hp -= player.str;
+					audios.enemyHit.play();
+					this.ctx.fillStyle = "rgba(255, 0, 0, 0.3)"
+					this.ctx.fillRect(this.x, this.y, this.width, this.height);
 					this.x += 5;
 				}
 				break;
@@ -80,6 +86,9 @@ Enemy.prototype.receiveDamage = function () {
 					this.y + this.height + 10 >= player.y &&
 					player.height + player.y >= this.y) {
 					this.hp -= player.str;
+					audios.enemyHit.play();
+					this.ctx.fillStyle = "rgba(255, 0, 0, 0.3)"
+					this.ctx.fillRect(this.x, this.y, this.width, this.height);
 					this.y -= 5;
 				}
 				break;
@@ -90,6 +99,9 @@ Enemy.prototype.receiveDamage = function () {
 					this.y + this.height >= player.y &&
 					player.height + player.y + 10 >= this.y) {
 					this.hp -= player.str;
+					audios.enemyHit.play();
+					this.ctx.fillStyle = "rgba(255, 0, 0, 0.3)"
+					this.ctx.fillRect(this.x, this.y, this.width, this.height);
 					this.y += 5;
 				}
 				break;

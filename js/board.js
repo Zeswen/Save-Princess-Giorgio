@@ -41,6 +41,7 @@ Canvas.prototype.checkHp = function () {
 		if (enemy.hp <= 0) {
 			let enemyIndex = canvas.enemies.indexOf(enemy);
 			canvas.enemies.splice(enemyIndex, 1);
+			audios.enemyDies.play();
 			player.xp += 25;
 			player.coins += 5;
 		}
@@ -57,14 +58,13 @@ Canvas.prototype.stopEnemySpawn = function () {
 			this.secCounter = 1;
 			this.enemyRate -= 20;
 			this.wave += 1;
-			(this.wave >= 8)
+			(this.wave >= 7)
 			? document.querySelector(".hud>h1").innerHTML = "Final Wave"
 			: document.querySelector("#waveCounter").innerHTML = this.wave;
 		}
 	}
-	if (this.enemyRate === 20 && this.enemies.length === 0 && boss === undefined) {
+	if (this.enemyRate === 60 && this.enemies.length === 0 && boss === undefined) {
 		window.alert("GGWP");
-		location.reload();
 	}
 }
 
