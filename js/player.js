@@ -122,6 +122,8 @@ Player.prototype.attack = function () {
 		if (this.counter > this.dex) {
 			this.attacks = true;
 			this.counter = 1;
+			audios.swordSound.pause();
+			audios.swordSound.currentTime = 0;
 			audios.swordSound.play();
 			switch (this.direction) {
 				case "N":
@@ -214,6 +216,7 @@ Player.prototype.receiveDamage = function () {
 Player.prototype.checkHp = function () {
 	if (this.hp <= 0) {
 		audios.playerDies.play();
+		setTimeout(() => window.alert("You died. Good luck on the next one!"), 500)
 	}
 }
 

@@ -1,0 +1,65 @@
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: content-box;
+  background: url("./img/background.jpg") no-repeat;
+  overflow: hidden;
+  font-family: Roboto;
+}
+
+.playContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  animation-name: fadeInOpacity;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-in;
+  animation-duration: 0.5s;
+}
+
+.play {
+  width: 720px;
+  height: 480px;
+  border: 5px solid rgb(53, 53, 53);
+  border-radius: 2%;
+  box-shadow: 0px 30px 40px rgba(0, 0, 0, .5);
+  background: url("./img/canvas-bg.png") 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.play img {
+  animation-name: fadeInOpacity;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-in;
+  animation-duration: 1.5s;
+}
+
+.play-button {
+  width: 96px;
+  height: 48px;
+  font-size: 1.75rem;
+  color: white;
+  background:rgb(104, 51, 104);
+  border: 1px solid rgba(0, 0, 0, 0.7);
+  border-radius: 50%;
+  outline: none;
+  cursor: pointer;
+}
+
+.play-button:hover {
+  transition: all 0.5s;
+  background: rgb(211, 108, 139);
+}
+
+@keyframes fadeInOpacity {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

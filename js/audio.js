@@ -10,6 +10,7 @@ function Audios(canvas) {
   this.backgroundMusic.volume = 0.5;
   this.backgroundMusic.autoplay = true;
 
+
   this.enemyDies = new Audio();
   this.enemyDies.src = "./audio/enemy-dies.wav"
 
@@ -25,6 +26,9 @@ function Audios(canvas) {
   this.playerHit = new Audio();
   this.playerHit.src = "./audio/link-hurt.wav"
 
+  this.shopMusic = new Audio();
+  this.shopMusic.src = "./audio/shop.mp3"
+
   this.juanSound = new Audio();
   this.juanSound.src = "./audio/shop.mp3"
 
@@ -36,6 +40,7 @@ function Audios(canvas) {
 
   this.gabiSound = new Audio();
   this.gabiSound.src = "./audio/shop.mp3"
+
 }
 
 const audios = new Audios(canvas.canvas);
