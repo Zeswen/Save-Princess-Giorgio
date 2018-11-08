@@ -244,7 +244,7 @@ Animations.prototype.princessDraw = function () {
 Animations.prototype.update = function () {
   this.princessDraw();
   this.enemyDraw();
-  if (waves === true && canvas.enemyRate === 40 && boss) {
+  if (waves === true && canvas.enemyRate === 60 && boss) {
     this.drawBoss();
   }
 }

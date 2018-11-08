@@ -9,8 +9,8 @@ function Boss(canvas) {
   this.minYPos = 0;
   this.maxXPos = canvas.width - this.width;
   this.maxYPos = canvas.height - this.height;
-  this.hp = 1000;
-  this.str = 50;
+  this.hp = 750;
+  this.str = 25;
 }
 
 Boss.prototype.move = function () {

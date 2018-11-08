@@ -216,7 +216,9 @@ Player.prototype.receiveDamage = function () {
 Player.prototype.checkHp = function () {
 	if (this.hp <= 0) {
 		audios.playerDies.play();
-		setTimeout(() => window.alert("You died. Good luck on the next one!"), 500)
+		setTimeout(() => {
+			if (!alert("You died. Good luck on the next one!")) { window.location.reload(); }
+		}, 500)
 	}
 }
 

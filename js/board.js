@@ -63,8 +63,8 @@ Canvas.prototype.stopEnemySpawn = function () {
 			: document.querySelector("#waveCounter").innerHTML = this.wave;
 		}
 	}
-	if (this.enemyRate === 60 && this.enemies.length === 0 && boss === undefined) {
-		window.alert("GGWP");
+	if (this.enemyRate === 40 && this.enemies.length === 0 && boss === undefined) {
+		if (!alert("Congratulations, you won!")) { window.location.reload(); }
 	}
 }
 

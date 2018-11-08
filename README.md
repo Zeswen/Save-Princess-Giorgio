@@ -7,11 +7,6 @@ But don't worry! You will have the help of Ironhack's TAs to defeat every single
 
 Go ahead and try it out in here: https://zeswen.github.io/Save-Princess-Giorgio/main.html
 
-![Title]("")
+![Title](https://i.imgur.com/4ScnXQZ.png)
 
 ![Ingame](https://i.imgur.com/4nYArRY.png)
-
-<<<<<<< HEAD
-
-=======
->>>>>>> e352aba7d2531b165c6a0c8756f809c9ee5f5c31

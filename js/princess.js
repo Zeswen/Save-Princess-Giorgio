@@ -11,11 +11,11 @@ function Princess(canvas) {
 
 Princess.prototype.checkCollision = function () {
 	if (this.x + this.width - 5 >= player.x &&
-		player.x + player.width>= this.x + 5 &&
+		player.x + player.width >= this.x + 5 &&
 		this.y + this.height - 5 >= player.y &&
 		player.height + player.y - 5 >= this.y) {
-			player.velY = 0;
-			player.velX = 0;
+		player.velY = 0;
+		player.velX = 0;
 		switch (player.direction) {
 			case "E":
 				player.x += 3;
@@ -69,7 +69,10 @@ Princess.prototype.receiveDamage = function () {
 
 Princess.prototype.checkHp = function () {
 	if (this.hp <= 0) {
-		location.reload();
+
+		setTimeout(() => {
+			if(!alert('The gorgeous Princess Giorgio died. Good luck on the next one!')){window.location.reload();}
+		}, 500)
 	}
 }
 
