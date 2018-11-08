@@ -44,6 +44,7 @@ Princess.prototype.receiveDamage = function () {
 			this.y + this.height >= enemy.y &&
 			enemy.height + enemy.y >= this.y) {
 			this.hp -= enemy.str;
+			audios.princessHit.play();
 			this.ctx.fillStyle = "rgba(255, 0, 0, 0.2)"
 			this.ctx.fillRect(this.x, this.y, this.width, this.height);
 			switch (enemy.direction) {
@@ -69,7 +70,7 @@ Princess.prototype.receiveDamage = function () {
 
 Princess.prototype.checkHp = function () {
 	if (this.hp <= 0) {
-
+		audios.princessDie.play();
 		setTimeout(() => {
 			if(!alert('The gorgeous Princess Giorgio died. Good luck on the next one!')){window.location.reload();}
 		}, 500)
@@ -85,6 +86,7 @@ Princess.prototype.showHp = function () {
 Princess.prototype.showDialog = function () {
 	if (this.interacted) {
 		document.querySelector(".dialog").style.opacity = 1;
+		audios.princessSave.play();
 		setTimeout(() => document.querySelector(".dialog").style.opacity = 0, 1500);
 		setTimeout(() => document.querySelector(".dialog").style.display = "none", 2500);
 		this.interacted = false;

@@ -13,33 +13,38 @@ function Audios(canvas) {
 
   this.enemyDies = new Audio();
   this.enemyDies.src = "./audio/enemy-dies.wav"
-
   this.enemyHit = new Audio();
   this.enemyHit.src = "./audio/enemy-hit.wav"
 
   this.swordSound = new Audio();
   this.swordSound.src = "./audio/sword-swing.wav"
-
   this.playerDies = new Audio();
   this.playerDies.src = "./audio/link-dies.wav"
-
   this.playerHit = new Audio();
   this.playerHit.src = "./audio/link-hurt.wav"
+
+  this.princessHit = new Audio();
+  this.princessHit.src = "./audio/princess-hit.mp3"
+  this.princessDie = new Audio();
+  this.princessDie.src = "./audio/princess-die.mp3"
+  this.princessSave = new Audio();
+  this.princessSave.src = "./audio/princess-save.mp3"
+  
 
   this.shopMusic = new Audio();
   this.shopMusic.src = "./audio/shop.mp3"
 
   this.juanSound = new Audio();
-  this.juanSound.src = "./audio/shop.mp3"
+  this.juanSound.src = "./audio/juan.mp3"
 
   this.diegoSound = new Audio();
-  this.diegoSound.src = "./audio/shop.mp3"
+  this.diegoSound.src = "./audio/diego.mp3"
 
   this.teoSound = new Audio();
-  this.teoSound.src = "./audio/shop.mp3"
+  this.teoSound.src = "./audio/teo.mp3"
 
   this.gabiSound = new Audio();
-  this.gabiSound.src = "./audio/shop.mp3"
+  this.gabiSound.src = "./audio/gabi.mp3"
 
 }
 

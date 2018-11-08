@@ -26,20 +26,35 @@ document.querySelector(".juan").onclick = function () {
   document.querySelector(".general").style.display = "block";
 }
 
+document.querySelector(".juan > img").onclick = function () {
+  audios.juanSound.play();
+};
+
 document.querySelector(".diego").onclick = function () {
   document.querySelector(".diego > img").style.display = "none";
   document.querySelector(".weapon").style.display = "block"
 }
+document.querySelector(".diego > img").onclick = function () {
+  audios.diegoSound.play();
+};
 
 document.querySelector(".teo").onclick = function () {
   document.querySelector(".teo > img").style.display = "none";
   document.querySelector(".armor").style.display = "block";
 }
 
+document.querySelector(".teo > img").onclick = function () {
+  audios.teoSound.play();
+};
+
 document.querySelector(".gabi").onclick = function () {
   document.querySelector(".gabi > img").style.display = "none";
   document.querySelector(".skills").style.display = "block";
 }
+document.querySelector(".gabi > img").onclick = function () {
+  audios.gabiSound.play();
+};
+
 
 document.querySelector("#healthPot").onclick = function () {
   if (player.coins >= 10) {
