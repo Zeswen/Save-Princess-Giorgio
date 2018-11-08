@@ -5,7 +5,7 @@ You will have to defeat 8 waves of feroceus monsters for 30 seconds, and defeat 
 
 But don't worry! You will have the help of Ironhack's TAs to defeat every single monster, they'll give you all the power you need (for a good price, of course).
 
-Go ahead and try it out in here: https://zeswen.github.io/Save-Princess-Giorgio/main.html
+Go ahead and try it out in here: https://zeswen.github.io/Save-Princess-Giorgio/
 
 ![Title](https://i.imgur.com/4ScnXQZ.png)
 
