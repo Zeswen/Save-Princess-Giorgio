@@ -1,3 +1,4 @@
+//todo: consider adding a GameConfig object
 function Player(canvas) {
 	this.ctx = canvas.ctx;
 	this.x = canvas.width / 2;
@@ -33,9 +34,14 @@ Player.prototype.idle = function () {
 	}
 }
 
+//todo: consider adding a GameKeysConfig object
+// GameKeysConfig = {
+// 	left: 37
+// }
 Player.prototype.move = function () {
 	if (keys[37] || keys[38] || keys[39] || keys[40]) {
 		if (keys[38]) {
+			//todo: consider refactoring this to a function
 			if (this.velY > -this.speed) {
 				this.velY--;
 				this.direction = "N";
@@ -153,7 +159,8 @@ Player.prototype.attack = function () {
 }
 
 Player.prototype.receiveDamage = function () {
-	if (waves === true) {
+	if (waves === true && this.hp > 0) {
+		//todo: consider refactor this. it is inneficient currently
 		canvas.enemies.forEach(enemy => {
 			if (this.x + this.width >= enemy.x &&
 				enemy.x + enemy.width >= this.x &&
@@ -182,7 +189,8 @@ Player.prototype.receiveDamage = function () {
 				}
 			}
 		})
-		if (boss) {
+		if (canvas.enemyRate === 60 && waves === true) {
+			//todo: consider using a CollisionManager class where you put all this logic
 			if (this.x + this.width >= boss.x &&
 				boss.x + boss.width >= this.x &&
 				this.y + this.height >= boss.y &&
@@ -192,6 +200,7 @@ Player.prototype.receiveDamage = function () {
 				this.ctx.fillStyle = "rgba(255, 0, 0, 0.3)"
 				this.ctx.fillRect(this.x, this.y, this.width, this.height);
 				switch (boss.direction) {
+					//todo: please remove hardcoded values
 					case "E":
 						this.x -= 15;
 						break;
@@ -216,9 +225,7 @@ Player.prototype.receiveDamage = function () {
 Player.prototype.checkHp = function () {
 	if (this.hp <= 0) {
 		audios.playerDies.play();
-		setTimeout(() => {
-			if (!alert("You died. Good luck on the next one!")) { window.location.reload(); }
-		}, 500)
+		setTimeout(() => canvas.gameOver = true, 750)
 	}
 }
 
@@ -229,7 +236,8 @@ Player.prototype.levelUp = function () {
 		this.xp -= this.maxXp;
 	}
 }
-
+//todo: remember to cache repeated DOM elements
+//todo: consider using a ScoreManager class
 Player.prototype.showHp = function () {
 	document.querySelector(".health-bar").dataset.total = this.maxHp;
 	document.querySelector(".health-bar").dataset.value = this.hp;

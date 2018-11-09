@@ -14,6 +14,7 @@ function Boss(canvas) {
 }
 
 Boss.prototype.move = function () {
+  //todo: remember, avoid repetitions in computations, i.e. var halfCanvasWidth
   if (this.y < canvas.height / 2) {
     this.y += 0.15;
     this.direction = "S"
@@ -35,6 +36,7 @@ Boss.prototype.move = function () {
 Boss.prototype.receiveDamage = function () {
   if (player.attacks) {
     switch (player.direction) {
+      //todo: please remember using a CollisionManagerClass
       case "E":
         if (this.x + this.width + 10 >= player.x &&
           player.x + player.width >= this.x &&
@@ -89,7 +91,7 @@ Boss.prototype.receiveDamage = function () {
 Boss.prototype.checkHp = function () {
   if (this.hp <= 0) {
     boss = undefined;
-    player.xp += 10000;
+    player.level += 50
     player.coins += 5000;
   }
 }

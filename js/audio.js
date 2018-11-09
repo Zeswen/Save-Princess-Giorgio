@@ -1,8 +1,17 @@
 function Audios(canvas) {
   this.ctx = canvas.getContext('2d');
 
+  this.gameOverSong = new Audio();
+  this.gameOverSong.src = "./audio/game-over.mp3";
+
+  this.gameWinSound = new Audio();
+  this.gameWinSound.src = "./audio/game-win.mp3";
+
+  this.peaceSong = new Audio();
+  this.peaceSong.src = "./audio/light-world.mp3"
+
   this.bossSong = new Audio();
-  this.bossSong.src = "./audio/boss-song.mp3",
+  this.bossSong.src = "./audio/boss-song.mp3";
   this.bossSong.volume = 0.5;
 
   this.backgroundMusic = new Audio();
@@ -29,7 +38,7 @@ function Audios(canvas) {
   this.princessDie.src = "./audio/princess-die.mp3"
   this.princessSave = new Audio();
   this.princessSave.src = "./audio/princess-save.mp3"
-  
+
 
   this.shopMusic = new Audio();
   this.shopMusic.src = "./audio/shop.mp3"

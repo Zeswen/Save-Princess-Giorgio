@@ -38,42 +38,43 @@ Princess.prototype.checkCollision = function () {
 
 
 Princess.prototype.receiveDamage = function () {
-	canvas.enemies.forEach(enemy => {
-		if (this.x + this.width >= enemy.x &&
-			enemy.x + enemy.width >= this.x &&
-			this.y + this.height >= enemy.y &&
-			enemy.height + enemy.y >= this.y) {
-			this.hp -= enemy.str;
-			audios.princessHit.play();
-			this.ctx.fillStyle = "rgba(255, 0, 0, 0.2)"
-			this.ctx.fillRect(this.x, this.y, this.width, this.height);
-			switch (enemy.direction) {
-				case "E":
-					enemy.x += 5;
-					break;
+	if (waves === true && this.hp > 0) {
+		canvas.enemies.forEach(enemy => {
+			if (this.x + this.width >= enemy.x &&
+				enemy.x + enemy.width >= this.x &&
+				this.y + this.height >= enemy.y &&
+				enemy.height + enemy.y >= this.y) {
+				this.hp -= enemy.str;
+				audios.princessHit.play();
+				this.ctx.fillStyle = "rgba(255, 0, 0, 0.2)"
+				this.ctx.fillRect(this.x, this.y, this.width, this.height);
+				switch (enemy.direction) {
+					case "E":
+						enemy.x += 5;
+						break;
 
-				case "W":
-					enemy.x -= 5;
-					break;
+					case "W":
+						enemy.x -= 5;
+						break;
 
-				case "N":
-					enemy.y += 5;
-					break;
+					case "N":
+						enemy.y += 5;
+						break;
 
-				case "S":
-					enemy.y -= 5;
-					break
+					case "S":
+						enemy.y -= 5;
+						break
+				}
 			}
-		}
-	})
+		})
+	}
 }
 
 Princess.prototype.checkHp = function () {
 	if (this.hp <= 0) {
 		audios.princessDie.play();
-		setTimeout(() => {
-			if(!alert('The gorgeous Princess Giorgio died. Good luck on the next one!')){window.location.reload();}
-		}, 500)
+		setTimeout(() => canvas.gameOver = true, 750)
+
 	}
 }
 

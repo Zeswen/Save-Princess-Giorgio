@@ -3,14 +3,19 @@ const keys = {};
 window.onload = function () {
 
 	function updateGame() {
-		requestAnimationFrame(updateGame);
+		if (canvas.gameOver == false) requestAnimationFrame(updateGame);
 		canvas.update();
 		player.update();
 		princess.update();
 		if (boss !== undefined) boss.update();
 		canvas.enemies.forEach(enemy => enemy.update());
 		animations.update();
+		if (canvas.gameOver == true) {
+			cancelAnimationFrame(updateGame);
+			canvas.gameOverScreen();
+		}
 	}
+	
 	updateGame();
 }
 

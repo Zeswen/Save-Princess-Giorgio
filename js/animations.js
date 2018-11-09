@@ -1,6 +1,12 @@
 function Animations(canvas) {
   this.ctx = canvas.getContext('2d');
 
+  this.gameOver = new Image();
+  this.gameOver.src = "./img/game-over.png"
+
+  this.gameWin = new Image();
+  this.gameWin.src = "./img/game-win.png"
+
   this.idlePlayer = new Image();
   this.idlePlayer.src = "./img/idle.png"
   this.idlePlayer.frames = 4;

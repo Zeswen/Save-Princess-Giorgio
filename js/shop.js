@@ -1,13 +1,15 @@
+//todo: consider refactoring this code so it lives inside of the namespaced object
 function showShop() {
   document.querySelector("#gameContainer").style.display = "none";
   document.querySelector(".shop").style.display = "flex";
-document.querySelector("#skillPoints").innerHTML = player.skillPoints;
+  document.querySelector("#skillPoints").innerHTML = player.skillPoints;
 }
 
 document.querySelector(".exitShop").onclick = function () {
   audios.shopMusic.pause();
   audios.shopMusic.currentTime = 0;
   audios.backgroundMusic.play();
+  //todo: remember, you can use an Array of TAs to simplify this code
   document.querySelector("#gameContainer").style.display = "flex";
   document.querySelector(".shop").style.display = "none";
   document.querySelector(".juan > img").style.display = "block";
@@ -102,6 +104,7 @@ document.querySelector("#sword2").onclick = function () {
   }
 }
 
+//todo: consider avoiding repetitions in the event handlers
 document.querySelector("#sword3").onclick = function () {
   if (player.coins >= 300) {
     player.coins -= 300;
@@ -157,7 +160,7 @@ document.querySelector("#hpUp").onclick = function () {
 }
 
 document.querySelector("#dexUp").onclick = function () {
-  if (player.dex === 1) {
+  if (player.dex === 2) {
     document.querySelector("#dexUp").disabled = true;
     document.querySelector("#dexUp").innerHTML = "Max";
   }
