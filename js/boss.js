@@ -14,22 +14,25 @@ function Boss(canvas) {
 }
 
 Boss.prototype.move = function () {
+
+  const halfCanvasWidth = canvas.width / 2;
+  const halfCanvasHeight = canvas.height / 2;
   //todo: remember, avoid repetitions in computations, i.e. var halfCanvasWidth
-  if (this.y < canvas.height / 2) {
+  if (this.y < halfCanvasHeight) {
     this.y += 0.15;
     this.direction = "S"
-  } else if (this.y > canvas.height / 2) {
+  } else if (this.y > halfCanvasHeight) {
     this.y -= 0.15;
     this.direction = "N"
-  } else if (this.x < canvas.width / 2) {
+  } else if (this.x < halfCanvasWidth) {
     this.x += 0.15;
     this.direction = "W";
-  } else if (this.x > canvas.width / 2) {
+  } else if (this.x > halfCanvasWidth) {
     this.x -= 0.15;
     this.direction = "E";
-  } else if (this.x === canvas.width / 2 && this.y === canvas.height / 2) {
-    this.x = canvas.width / 2;
-    this.y = canvas.height / 2;
+  } else if (this.x === halfCanvasWidth && this.y === halfCanvasHeight) {
+    this.x = halfCanvasWidth;
+    this.y = halfCanvasHeight;
   }
 }
 
